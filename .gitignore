@@ -1,4 +1,10 @@
+# generated
 node_modules/
 build/
 dist/
+
 *.db
+.env
+
+# os files
+.DS_Store
