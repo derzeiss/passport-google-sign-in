@@ -35,7 +35,7 @@ app.use(
     saveUninitialized: false, // don't create session until something stored
     cookie: { secure: !isDev, httpOnly: false }, // only allow cookies via https if in a prod env
     store: new SQLiteStore({ db: 'sessions.db', dir: './db' }) as Store,
-  })
+  }),
 );
 app.use(passport.initialize());
 app.use(passport.session());

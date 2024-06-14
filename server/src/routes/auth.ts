@@ -55,8 +55,8 @@ passport.use(
       });
 
       done(null, user);
-    }
-  )
+    },
+  ),
 );
 
 passport.serializeUser<SessionUser>((user, done) => {
@@ -65,7 +65,7 @@ passport.serializeUser<SessionUser>((user, done) => {
     done(null, {
       id: user.id,
       firstname: user.firstname,
-    })
+    }),
   );
 });
 
@@ -86,5 +86,5 @@ authRouter.get(
   passport.authenticate('google', {
     failureRedirect: '/login',
     successReturnToOrRedirect: '/',
-  })
+  }),
 );
