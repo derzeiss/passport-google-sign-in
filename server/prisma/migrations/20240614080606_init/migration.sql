@@ -2,7 +2,8 @@
 CREATE TABLE "User" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "email" TEXT NOT NULL,
-    "name" TEXT
+    "firstname" TEXT NOT NULL,
+    "lastname" TEXT NOT NULL
 );
 
 -- CreateTable
@@ -12,13 +13,6 @@ CREATE TABLE "FederatedCredentials" (
     "provider" TEXT NOT NULL,
     "externalId" TEXT NOT NULL,
     CONSTRAINT "FederatedCredentials_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE
-);
-
--- CreateTable
-CREATE TABLE "Session" (
-    "sid" TEXT NOT NULL PRIMARY KEY,
-    "expires" TEXT NOT NULL,
-    "payload" TEXT NOT NULL
 );
 
 -- CreateIndex
