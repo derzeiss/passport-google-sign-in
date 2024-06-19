@@ -1,21 +1,10 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import { AppHeader } from './components/AppHeader';
 
 export const App: React.FC = () => {
   return (
     <>
-      <header>
-        auth-test
-        <nav>
-          <menu>
-            <li>
-              <NavLink to="/">Home</NavLink>
-            </li>
-            <li>
-              <NavLink to="/login">Login</NavLink>
-            </li>
-          </menu>
-        </nav>
-      </header>
+      <AppHeader />
       <Outlet />
     </>
   );

@@ -2473,3 +2473,9 @@ table.center td,
 th {
   text-align: center;
 }
+
+/* ---- CUSTOM STYLES ---- */
+
+a.active {
+  color: var(--active) !important;
+}
