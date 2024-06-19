@@ -1,8 +1,8 @@
-import express from 'express';
+import { Router } from 'express';
 import createHttpError from 'http-errors';
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '../config';
+import { CLIENT_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } from '../config';
 import { prisma } from '../db';
 import { SessionUser } from '../types/SessionUser';
 
@@ -78,13 +78,20 @@ passport.deserializeUser<SessionUser>((sessionUser, done) => {
 });
 
 // ---- ROUTER ----
-export const authRouter = express.Router();
+export const authRouter = Router();
 
 authRouter.get('/google', passport.authenticate('google'));
 authRouter.get(
   '/google/callback',
   passport.authenticate('google', {
     failureRedirect: '/login',
-    successReturnToOrRedirect: '/',
+    successReturnToOrRedirect: `${CLIENT_URL}/login/success`,
   }),
 );
+
+authRouter.get('/logout', (req, res, next) => {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.sendStatus(204);
+  });
+});
