@@ -2,6 +2,7 @@
 export const NODE_ENV = process.env.NODE_ENV || 'production';
 export const HOST = process.env.HOST || 'localhost';
 export const PORT = process.env.PORT || '3001';
+export const CLIENT_URL = process.env.CLIENT_URL || `https://${HOST}:${PORT}`;
 
 // prisma
 export const DATABASE_URL = process.env.DATABASE_URL || '';
