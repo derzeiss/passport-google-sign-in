@@ -15,6 +15,7 @@ passport.use(
       scope: ['profile', 'email'],
     },
     async (_accessToken, _refreshToken, profile, done) => {
+      console.log('google api response', JSON.stringify(profile, null, 2));
       // check if user known
       const federatedCredentials = await prisma.federatedCredentials.findFirst({
         where: {
